@@ -14,10 +14,6 @@
 </head>
 
 
-<div class="row ms-2 mt-2" style="width: 200px;">
-  <input class="btn btn-danger" type="button" value="Página anterior" onClick="history.go(-1);">
-</div>
-
 <?php
 
 include('../Servicios/conexion.php');
@@ -78,7 +74,7 @@ if ($result->num_rows > 0) {
   <body>
 
 
-    <table style="margin: auto; margin-top: 10px">
+    <table style="margin: auto; margin-top:10px;">
       <tr>
         <th>
           <h1>
@@ -89,18 +85,15 @@ if ($result->num_rows > 0) {
           <h1>
             Detección
           </h1>
-
-
         </th>
       </tr>
       <tr>
         <td style="
               border: solid 10px;
               border-color: #444;
-              border-radius: 10px;
-              
+              border-radius: 10px;  
             ">
-          <video id="cam_input" name="cam_input" height="480" width="640"></video>
+          <video id="cam_input" name="cam_input" height="360" width="480"></video>
         </td>
         <td style="border: solid 10px; border-color: #444;border-radius: 10px;">
           <canvas id="canvas_output"></canvas>
@@ -116,11 +109,8 @@ if ($result->num_rows > 0) {
     <div class="container overflow-hidden text-center mt-3">
       <div class="row">
         <div class="col-6">
-          <button onClick="take_snapshot()" class="btn btn-danger" style="width: 100%; height: 95%;">Capturar foto</button>
-        </div>
-        <div class="col-6">
 
-          <div class="card panel-control">
+          <div class="card panel-control" style="width: 90%; margin-left:53%;">
 
             <div class="row">
               <div class="col-1"><label for="">Escala: </label></div>
@@ -133,8 +123,6 @@ if ($result->num_rows > 0) {
 
               </div>
             </div>
-
-
             <div class="row">
               <div class="col-1"><label for="">Vecinos: </label></div>
               <div class="col-10">
@@ -163,6 +151,9 @@ if ($result->num_rows > 0) {
 
 
           </div>
+        </div>
+        <div class="col-6">
+          <button onClick="take_snapshot()" class="btn btn-danger" style="width: 20%; height: 30%; margin-top:17%;margin-left:35%;">Capturar foto</button>
         </div>
       </div>
 

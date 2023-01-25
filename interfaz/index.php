@@ -37,9 +37,6 @@
                                 <label for="Cedula">Cédula</label>
                             </div>
                         </div>
-                        <div class="col-3 align-self-center">
-                            <input name="buscar" id="buscar" class="btn btn-outline-primary" style="width: 100%; height: 100%;" value="Buscar" type="button">
-                        </div>
                     </div>
 
                     <!-- <div class="row ps-5 pe-5">

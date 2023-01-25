@@ -26,7 +26,7 @@ if ($result->num_rows > 0) {
     $file = $path1.$path2.$contador++.$ext;
     // $file = 'images/aa.$contador.png';
     $success = file_put_contents($file, $data);
-    print $success ? $file : 'Unable to save the file.';
+
   
     $sqlInsert = "INSERT INTO registro_empleado (CED_EMP, FECHA_ENTRADA, CASCO,CHALECO, BOTAS, OBSERVACION, IMAGEN_NOMBRE, PATH) VALUES ('$Cedula', '$hoy' , '$casco', 0,0, 'Ninguna', '$image', '$file')";
     // mysqli_query($conn, $sqlInsert);
@@ -34,7 +34,7 @@ if ($result->num_rows > 0) {
       die(mysqli_error($conn));
     }
     
-    echo json_encode($empleado);    
+    //echo json_encode($empleado);    
 } else {
     http_response_code(404);
 

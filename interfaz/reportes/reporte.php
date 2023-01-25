@@ -1,4 +1,3 @@
-
 <?php
 require('../../reportes/fpdf.php');
 
@@ -16,15 +15,15 @@ function Header()
     //color
     $this->SetTextColor(220,50,50);
     // Title
-    $this->Cell(70,10,'Reporte de Empleados',1,0,'C');
+    $this->Cell(90,10,'Reporte de Ingresos',1,0,'C');
     // Line break
     $this->Ln(20);
 
-    $this->Cell(30,10,utf8_decode("Cédula"), 1 , 0, 'C', 0);
-    $this->Cell(40,10,"Nombre", 1 , 0, 'C', 0);
-    $this->Cell(40,10,"Apellido", 1 , 0, 'C', 0);
-    $this->Cell(40,10,"Edad" , 1 , 0, 'C', 0);
-    $this->Cell(40,10,"Imagen" , 1 , 1, 'C', 0);
+    $this->Cell(50,10,utf8_decode("Cédula"), 1 , 0, 'C', 0);
+    $this->Cell(50,10,"Hora", 1 , 0, 'C', 0);
+    //$this->Cell(40,10,"Apellido", 1 , 0, 'C', 0);
+    //$this->Cell(40,10,"Edad" , 1 , 0, 'C', 0);
+    $this->Cell(50,10,"Imagen" , 1 , 1, 'C', 0);
 }
 
 // Page footer
@@ -41,7 +40,6 @@ function Footer()
 }
 
 require ('../../servicios/conexion.php');
-// $query = "SELECT * FROM empleado WHERE CED_EMP IN (SELECT CED_EMP FROM registro_empleado WHERE CASCO = 1)";
 $query = "SELECT * FROM registro_empleado";
 $result = $conn->query($query);
 
@@ -52,33 +50,15 @@ $pdf->AliasNbPages();
 $pdf->AddPage();
 $pdf->SetFont('Times','',12);
 
-function calculaedad($fechanacimiento){
-    list($ano,$mes,$dia) = explode("-",$fechanacimiento);
-    $ano_diferencia  = date("Y") - $ano;
-    $mes_diferencia = date("m") - $mes;
-    $dia_diferencia   = date("d") - $dia;
-    if ($dia_diferencia < 0 || $mes_diferencia < 0)
-      $ano_diferencia--;
-    return $ano_diferencia;
-  }
-
-  $fill = $pdf->SetFillColor(128,128,128);
-
-
-  $fill = false;
-  
   $ruta = "../../";
 
 while($row = $result -> fetch_assoc()){
 
-    $pdf->Cell(30,10,$row['CED_EMP'],'LR',0,'L',$fill );
-    $pdf->Cell(40,10,$row['FECHA_ENTRADA'] ,'LR',0,'L',$fill );     
-    $pdf->Cell(40,10, $row['CASCO'] , 'LR',0,'L',$fill);
-    $pdf->Cell(40,10,$row['BOTAS'], 'LR',0,'L',$fill);    
-    $pdf->Cell(40,10, $pdf->Image($ruta.$row['PATH'],null,null,20,20,'png') , 'LR',1,'L',$fill);    
-    $fill = !$fill;
+  $pdf->Cell(50,25,$row['CED_EMP'], 1, 0, 'C' );
+  $pdf->Cell(50,25,$row['FECHA_ENTRADA'] , 1, 0, 'C' );   
+  $pdf->Cell(50,25, $pdf->Image($ruta.$row['PATH'],$pdf->GetX()+10, $pdf->GetY()+3, 30,20,'png'), 1,1,'C');
+  
 
 }
 $pdf->Output();
 ?>
-
