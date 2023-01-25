@@ -1,0 +1,13 @@
+.col-5 {
+    background: rgb(143, 93, 236);
+    background: linear-gradient(90deg, rgba(143, 93, 236, 1) 18%, rgba(101, 92, 240, 1) 42%, rgba(47, 96, 249, 1) 72%);    
+    text-align: center;
+    height: 100vh;
+}
+
+.h1,
+.h3 {
+    color: whitesmoke;
+}
+
+
